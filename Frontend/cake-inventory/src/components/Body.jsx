@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { IngredientsCard } from "./index";
+import { FaSearch } from "react-icons/fa";
 const Body = () => {
   const [ingredients, setIngredients] = useState([]);
   const [addIngredient, setAddIngredient] = useState({
@@ -9,12 +10,13 @@ const Body = () => {
     addExpiryDate: "",
     addQuantity: "",
   });
+  const [search, setSearch] = useState("");
   // console.log(ingredients);
 
-  function handleAdd() {
+  function handleAdd(addIngredient) {
     console.log(addIngredient);
     try {
-      fetch("http://localhost:5000/ingredient", {
+      fetch("http://localhost:5000/ingredients", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(addIngredient),
@@ -23,6 +25,13 @@ const Body = () => {
     } catch (error) {
       throw new Error(error);
     }
+    console.log(addIngredient);
+  }
+
+  function handleSearch(search, ingredients) {
+    setIngredients(
+      ingredients.filter((item) => item.ingredient_name == search)
+    );
   }
 
   async function getIngredients() {
@@ -47,10 +56,29 @@ const Body = () => {
           <h1>Wait Until Data Loading</h1>
         </div>
       ) : (
-        <div className="flex justify-center font-nunitoSans">
-          <table className="table-auto border text-[20px]">
-            <thead className="border">
-              <tr className="border text-center">
+        <div className="text-center font-nunitoSans p-4 overflow-x-auto">
+          <div className="pb-4 flex items-center justify-center font-bold">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="border-2 rounded-lg p-2 pr-10 font-nunitoSans"
+              placeholder="Search Ingredient"
+              onKeyDown={(e) => {
+                e.key === "Enter" ? handleSearch(search, ingredients) : "";
+              }}
+            />
+            <button
+              type="button"
+              className="relative right-12 mx-4"
+              onClick={() => handleSearch(search, ingredients)}
+            >
+              <FaSearch />
+            </button>
+          </div>
+          <table className="table border text-[20px]">
+            <thead className="border rounded rounded-t-lg">
+              <tr className="border text-center font-bold ">
                 <td className="border">Ingredient Name</td>
                 <td className="border">Unit</td>
                 <td className="border">Purchased on</td>
@@ -58,7 +86,7 @@ const Body = () => {
                 <td className="border">Stock Quantity</td>
                 <td className="border">Used Quantity</td>
                 <td className="border">Current Quantity</td>
-                <td className="border">Add</td>
+                <td className="border">Add Quantity/Remove Item</td>
               </tr>
             </thead>
             <tbody className="table-auto text-center">
@@ -143,7 +171,17 @@ const Body = () => {
                 <td className="border">-</td>
                 <td className="border">-</td>
                 <td className="border">
-                  <button type="button" onClick={() => handleAdd()}>
+                  {/* <button
+                    type="button"
+                    onClick={() => handleAdd(addIngredient)}
+                  >
+                    Add Ingredient
+                  </button> */}
+                  <button
+                    type="button"
+                    className="rounded-3xl p-2 bg-theme-color text-[#fff]"
+                    onClick={() => handleAdd(addIngredient)}
+                  >
                     Add Ingredient
                   </button>
                 </td>

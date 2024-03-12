@@ -16,11 +16,12 @@ export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <h1>SOMETHING WENT WRONG</h1>,
     children: [
-      { path: "/", element: <Body /> },
+      { path: "/", element: <Shop /> },
       {
-        path: "/shop",
-        element: <Shop />,
+        path: "/admin",
+        element: <Body />,
       },
     ],
   },

@@ -62,27 +62,30 @@ function IngredientsCard({ item }) {
       <td className="border">
         {ingredient_quantity - quantity_used + " " + ingredient_unit}
       </td>
-      <td className="px-4">
+      <td className="px-2">
         <div>
-          <input
-            type="number"
-            value={inputOfAdd}
-            onChange={(e) => setInputOfAdd(e.target.value)}
-            name="addQuantity"
-            placeholder="Add quantity"
-            minLength={1}
-            maxLength={4}
-          />
+          <div className="flex">
+            <input
+              type="number"
+              className="border-2 rounded px-1 w-40"
+              value={inputOfAdd}
+              onChange={(e) => setInputOfAdd(e.target.value)}
+              name="addQuantity"
+              placeholder="Add quantity"
+              minLength={1}
+              maxLength={4}
+            />
+            <button
+              type="button"
+              className="rounded-xl p-2 bg-theme-color text-[#fff]"
+              onClick={() => handleSubmit()}
+            >
+              Add
+            </button>
+          </div>
           <button
-            className="border-4"
             type="button"
-            onClick={() => handleSubmit()}
-          >
-            Add+
-          </button>
-          <button
-            type="button"
-            className="border rounded text-[1rem]"
+            className="border rounded text-[1rem] px-2 w-30"
             onClick={() => handleDelete()}
           >
             Remove from inventory

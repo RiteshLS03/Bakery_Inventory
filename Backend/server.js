@@ -118,6 +118,89 @@ app.patch("/ingredients", async (req, res) => {
     }
   );
 });
+
+//TO DEDUCT INGREDEINT FROM INVENTORY
+app.patch("/ingredients", async (req, res) => {
+  // connection.query(
+  //   "UPDATE ingredients SET ingredient_quantity = ? - ? ,",
+  //   [req.body.ingredient_quantity, req.body.ingredients],
+  //   (err, data) => {
+  //     if (err) {
+  //       console.error("Error updated ingredient:", err);
+  //       res.status(500).json({ error: "Internal Server Error" });
+  //     } else {
+  //       console.log("Ingredient updated successfully:", data);
+  //       res
+  //         .status(201)
+  //         .json({ message: "Ingredient updated successfully", data });
+  //     }
+  //   }
+  // );
+  // const ingredient = req.body.ingredient_name;
+  const ingredientsData = req.body.ingredients.ingredients;
+  console.log(ingredientsData);
+  // console.log(Object.entries(ingredients_Data).forEach([ingredient, quantity]));
+  // Object.entries(ingredients_Data).forEach(([ingredient, quantity]) => {
+  //   // console.log();
+  //   connection.query(
+  //     "UPDATE ingredients SET quantity_used = quantity_used + ? WHERE ingredient_name = ?"
+  //   ),
+  //     [quantity, ingredient],
+  //     (err, data) => {
+  //       if (err) {
+  //         console.error(`Error updating ${ingredient}:`, err);
+  //       } else {
+  //         console.log(`${ingredient} updated successfully:`, data);
+  //       }
+  //     };
+  // });
+
+  // AI
+
+  // Object.entries(ingredientsData).forEach(([ingredient, quantity]) => {
+  //   connection.query(
+  //     "UPDATE ingredients SET quantity_used = quantity_used + ? WHERE ingredient_name = ?",
+  //     [quantity, ingredient],
+  //     (err, data) => {
+  //       if (err) {
+  //         console.error(`Error updating ${ingredient}:`, err);
+  //       } else {
+  //         console.log(`${ingredient} updated successfully:`, data);
+  //       }
+  //     }
+  //   );
+  // });
+  Object.entries(ingredientsData).forEach(([ingredient, quantity]) => {
+    connection.query(
+      "UPDATE ingredients SET quantity_used = quantity_used + ? WHERE ingredient_name = ?",
+      [quantity, ingredient],
+      (err, updateResult) => {
+        if (err) {
+          console.error(`Error updating ${ingredient}:`, err);
+        } else {
+          console.log(`${ingredient} updated successfully`);
+
+          // Fetch the updated data for the ingredient
+          connection.query(
+            "SELECT * FROM ingredients WHERE ingredient_name = ?",
+            [ingredient],
+            (selectErr, selectResult) => {
+              if (selectErr) {
+                console.error(
+                  `Error fetching updated data for ${ingredient}:`,
+                  selectErr
+                );
+              } else {
+                console.log(`${ingredient} updated data:`, selectResult);
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+});
+
 app.listen(5000, () => {
   console.log("Listening on http://localhost:5000");
 });
