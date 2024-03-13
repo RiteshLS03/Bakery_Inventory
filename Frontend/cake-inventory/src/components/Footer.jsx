@@ -1,7 +1,7 @@
 import { FaGoogle, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="items-center justify-center bg-[#111116] text-[#B2B2B2] py-8">
+    <div className="items-center justify-center bg-[#111116] text-[#B2B2B2] py-12">
       <div className="flex justify-around bg-[#111116] text-[#B2B2B2] p-2 border-b-2">
         <div className="w-1/6">
           <p className="text-[#fff] text-3xl font-bold py-8">Wakery</p>

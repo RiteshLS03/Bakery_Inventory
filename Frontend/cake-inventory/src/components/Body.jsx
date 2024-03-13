@@ -56,7 +56,7 @@ const Body = () => {
           <h1>Wait Until Data Loading</h1>
         </div>
       ) : (
-        <div className="text-center font-nunitoSans p-4 overflow-x-auto">
+        <div className="text-center font-nunitoSans px-4 py-8 overflow-x-auto">
           <div className="pb-4 flex items-center justify-center font-bold">
             <input
               type="text"

@@ -27,14 +27,10 @@ const cakesData = [
     description: "Classic vanilla cake with a rich buttery flavor",
     ingredients: {
       flour: "2.5",
-      flourUnit: "Kg",
       sugar: "2",
-      sugarUnit: "Kg",
       butter: "1",
-      butterUnit: "Kg",
       eggs: "3",
       milk: "1",
-      milkUnit: "Litre",
     },
   },
   {
@@ -46,13 +42,9 @@ const cakesData = [
     description: "Rich and velvety red velvet cake with cream cheese frosting",
     ingredients: {
       flour: "2.3",
-      flourUnit: "Kg",
       sugar: "3",
-      sugarUnit: "Kg",
       butter: "1.2",
-      butterUnit: "Kg",
       "cocoa Powder": "2",
-      cocoaPowderUnit: "Kg",
       eggs: "4",
     },
   },
@@ -65,11 +57,8 @@ const cakesData = [
     description: "Delicious lemon-flavored cake with fresh blueberries",
     ingredients: {
       flour: "2.2",
-      flourUnit: "Kg",
       sugar: "2.5",
-      sugarUnit: "Kg",
       butter: "1.3",
-      butterUnit: "Kg",
       eggs: "3",
     },
   },
@@ -82,14 +71,10 @@ const cakesData = [
     description: "Light and fluffy shortcake with fresh strawberries",
     ingredients: {
       flour: "2.8",
-      flourUnit: "Kg",
       sugar: "1.8",
-      sugarUnit: "Kg",
       butter: "0.8",
-      butterUnit: "Kg",
       eggs: "2",
       milk: "0.5",
-      milkUnit: "Cup",
     },
   },
   {
@@ -101,14 +86,10 @@ const cakesData = [
     description: "Mocha-flavored cake with a generous amount of walnuts",
     ingredients: {
       flour: "2.5",
-      flourUnit: "Kg",
       sugar: "3",
-      sugarUnit: "Kg",
       butter: "1.2",
-      butterUnit: "Kg",
       eggs: "4",
       milk: "1.2",
-      milkUnit: "Litres",
     },
   },
   {
@@ -121,11 +102,8 @@ const cakesData = [
       "Moist and flavorful coconut cake with creamy coconut frosting",
     ingredients: {
       flour: "2.2",
-      flourUnit: "Kg",
       sugar: "2.2",
-      sugarUnit: "Kg",
       butter: "0.9",
-      butterUnit: "Kg",
       eggs: "3",
     },
   },
@@ -138,10 +116,8 @@ const cakesData = [
     description: "Creamy cheesecake with a burst of fresh blueberries",
     ingredients: {
       sugar: "1.5",
-      sugarUnit: "Kg",
       eggs: "3",
       butter: "0.5",
-      butterUnit: "Kg",
     },
   },
 ];

@@ -5,11 +5,14 @@ import PropTypes from "prop-types"; // ES6
 
 const Cards = ({ item, index }) => {
   const handleAddToCart = (item) => {
+    confirm(`Do you want to continue with ${item.name}?`)
+      ? alert("Order Placed!")
+      : alert("Cancelled");
     try {
-      fetch("http://localhost:5000/ingredients", {
+      fetch("http://localhost:5000/ingredients/used", {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ ingredients: item }),
+        body: JSON.stringify({ ingredients: item.ingredients }),
       });
       // window.location.reload(true);
     } catch (error) {

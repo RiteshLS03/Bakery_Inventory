@@ -41,6 +41,7 @@ function IngredientsCard({ item }) {
       });
     window.location.reload(true);
   };
+  console.log(quantity_used);
   return (
     <tr className="border">
       <td className="border">{ingredient_name}</td>
@@ -60,7 +61,8 @@ function IngredientsCard({ item }) {
         {quantity_used ? quantity_used + ingredient_unit : 0 + ingredient_unit}
       </td>
       <td className="border">
-        {ingredient_quantity - quantity_used + " " + ingredient_unit}
+        {(ingredient_quantity - quantity_used).toFixed(1)}
+        {ingredient_unit}
       </td>
       <td className="px-2">
         <div>
