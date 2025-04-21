@@ -58,6 +58,7 @@ const Footer = () => {
       </div>
       <p className="text-center py-4">
         Copyright © 2021 Wakery All Rights Reserved Developed By Ritesh Narwade
+        & Nitin Shelar
       </p>
     </div>
   );
